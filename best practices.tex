@@ -18,7 +18,7 @@
 \begin{document}
 \maketitle
 \chapter{Introduction}
-Workflow based on the \href{https://software.broadinstitute.org/gatk/best-practices/}{GATK best practices}
+These workflows are based on the \href{https://software.broadinstitute.org/gatk/best-practices/}{GATK best practices}
 The workflow requires specification of paths to a number of programs and reference datasets which must be downloaded and installed first.
 \section{Programs}
 \begin{lstlisting}[language=bash]
@@ -37,7 +37,7 @@ cosmic=/data/appdata/COSMIC/grch37/CosmicCodingMuts_v76_reordered.vcf
 \end{lstlisting}
 
 
-\chapter{Aligment and quality calibration for DNA-seq}
+\chapter{Exome-seq}
 \section{Alignment}
 
 \begin{lstlisting}[language=bash]
@@ -106,7 +106,6 @@ $java -jar $gatk \
 -o recal_reads.bam
 \end{lstlisting}
 
-\chapter{Variant Calling for DNA-seq}
 \section{Germline Variant Calling}
 \begin{lstlisting}[language=bash]
 $java -Xmx10g -jar $gatk \
@@ -133,8 +132,7 @@ $java -Xmx10g -jar $gatk \
 -nct 8
 \end{lstlisting}
 
-\chapter{Annotation of variants}
-\section{Oncotator}
+\section{Annotation of variants using Oncotator}
 \begin{lstlisting}[language=bash]
 ## Filter out variants with PASS
 /data/apps/vcftools_0.1.13/bin/vcftools \
