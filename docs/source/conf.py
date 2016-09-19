@@ -47,8 +47,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Best Practices for Processing HTS Data'
-copyright = '2016, Michael Kundsen'
-author = 'Michael Kundsen'
+copyright = '2016, NEXT Bioinformatics'
+author = 'NEXT Bioinformatics'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
