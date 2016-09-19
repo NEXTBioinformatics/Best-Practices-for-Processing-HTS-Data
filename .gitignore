@@ -54,3 +54,8 @@ Temporary Items
 *.txt
 *.pdf
 
+# ================
+# Read the Docs
+# ================
+
+docs/build
