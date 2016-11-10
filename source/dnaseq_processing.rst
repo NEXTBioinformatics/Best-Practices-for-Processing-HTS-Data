@@ -1,7 +1,6 @@
 Processing of DNA-seq
 ========
 - Alignment
-	.. code-block:: bash
 	::
 		/data/apps/bwa-0.7.12/bwa mem \
 		-M \
