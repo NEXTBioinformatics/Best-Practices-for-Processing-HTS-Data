@@ -1,6 +1,7 @@
 Processing of DNA-seq
 ========
-- Alignment::
+- Alignment
+This is how alignment is done::
 	/data/apps/bwa-0.7.12/bwa mem \
 	-M \
 	-t8 \
