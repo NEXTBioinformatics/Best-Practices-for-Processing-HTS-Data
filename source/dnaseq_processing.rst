@@ -1,5 +1,19 @@
 Processing of DNA-seq
 ========
+The workflow below requires specification paths to a number of datasets and programs::
+	
+	## Datasets
+	assembly="path to reference genome (e.g. b37) in .fasta format"
+	known_snp="path to list of variants included in dbSNP in .vcf format"
+	known_indels="path to list of known INDELs in .vcf format" 
+	regions="path to .bed file specifying regions of interest, e.g. exome-capture kit regions"
+	cosmic="path to .vcf file with known somatic mutations in the COSMIC database"
+	
+	## Programs
+	java="path to java 1.8 or newer"
+	gatk="path to gatk .jar file"
+	picard="path to picard .jar file"
+	
 - Alignment
 
 Paired end reads are mapped to a reference genome using BWA MEM::
