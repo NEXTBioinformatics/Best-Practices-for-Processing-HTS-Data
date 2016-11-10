@@ -1,4 +1,4 @@
-Sketchy Pipeline
+CLC Germline workflow
 ================
 - fastq files are imported to clc.
 	- Reads that did not pass a quality filter are ignored.
