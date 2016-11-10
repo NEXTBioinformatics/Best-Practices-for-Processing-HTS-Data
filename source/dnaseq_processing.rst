@@ -1,5 +1,6 @@
 Processing of DNA-seq
-========
+=====================
+
 The workflow below requires specification paths to a number of datasets and programs::
 	
 	## Datasets
