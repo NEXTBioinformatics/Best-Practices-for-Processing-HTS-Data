@@ -11,5 +11,10 @@ number of programs and reference datasets which must be downloaded and installed
 
 .. toctree::
    :maxdepth: 2
-
-   datasets
+   :titlesonly:
+   
+   datasets.rst
+   dnaseq_processing.rst
+   rnaseq_processing.rst
+   CLC_germline_workflow.rst
+   
