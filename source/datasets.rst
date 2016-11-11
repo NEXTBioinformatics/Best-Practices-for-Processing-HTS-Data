@@ -7,6 +7,8 @@ Datasets
 	The link contains bundles for a number of different versions of the human reference genome; in the NEXT bioinformatics network we use b37.
 
 - Oncotator Annotation
-	Instructions for downloading the Oncotator ressource files and installing the software can be found at: http://gatkforums.broadinstitute.org/wdl/discussion/4154/howto-install-and-run-oncotator-for-the-first-time
+	Instructions for downloading the Oncotator ressource files and installing the software can be found `here
+	<http://gatkforums.broadinstitute.org/wdl/discussion/4154/howto-install-and-run-oncotator-for-the-first-time>`_
+	
 
 
