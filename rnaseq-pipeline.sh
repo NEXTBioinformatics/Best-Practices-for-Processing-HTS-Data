@@ -4,9 +4,9 @@ DAT="/path/to/data" ### PATH TO FOLDER CONTAINING GZ-COMPRESSED FASTQ FILES
 
 OUT="/path/to/output" ### PATH TO FOLDER DEPOSITING THE RESULTS
 
-REFT="/path/to/reference" ### PATH TO FOLDER TRANSCRIPTOME REFERENCE (fa file and bowtie index files)
+REFT="/path/to/reference" ### PATH TO FOLDER TRANSCRIPTOME REFERENCE (gtf/gff file)
 
-REFG="/path/to/reference" ### PATH TO FOLDER TRANSCRIPTOME REFERENCE (GTF file)  
+REFG="/path/to/reference" ### PATH TO FOLDER GENOME REFERENCE (fa file and bowtie index files)  
 
 SAMTOOLS="/path/to/samtools" ### PATH TO SAMTOOLS 
 
