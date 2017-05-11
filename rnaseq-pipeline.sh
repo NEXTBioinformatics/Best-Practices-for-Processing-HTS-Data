@@ -53,19 +53,6 @@ $SAMTOOLS/samtools index $OUT/${newfile}/accepted_hits.bam
 mv $OUT/${newfile}/accepted_hits.bam $OUT/${newfile}/${newfile}_accepted_hits.bam
 mv $OUT/${newfile}/accepted_hits.bam.bai $OUT/${newfile}/${newfile}_accepted_hits.bam.bai
 
-
-DAT="/data/mark/data/maria/poolM"
-REF="/data/mark/tools/ref"
-REFBWT="/data/mark/tools/ref/bwt/"
-ALGTOPHAT="/data/mark/tools/alignments/tophat"
-FASTX="/data/mark/tools/fastx/bin"
-CUF="/data/mark/tools/cufflinks-2.2.1.Linux_x86_64"
-SAM="/data/mark/tools/samtools-1.3.1/samtools"
-BEDTOOLS="/data/mark/tools/bedtools225/bin/bedtools"
-
-
-newfile="ms4_il_rep2"
-
 $python -m HTSeq.scripts.count --format bam --mode union --stranded no --minaqual 1 --type gene --idattr gene_id $OUT/${newfile}/${newfile}_accepted_hits.bam $REFT > $OUT/${newfile}_gene_read_counts_table.tsv
 
 done 
