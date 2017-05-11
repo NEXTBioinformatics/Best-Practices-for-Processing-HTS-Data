@@ -22,20 +22,17 @@ done
 for i in *_R1.fastq;
 do
 newfile=$(basename $i _R1.fastq)
-
 $BBMAP/bbduk.sh -Xmx20g in1=/$DAT/${newfile}_R1.fastq in2=/$DAT/${newfile}_R2.fastq out1=/$DAT/${newfile}_clean_R1.fastq out2=/$DAT/${newfile}_clean_R2.fastq ref=$BBMAP/resources/adapters.fa ktrim=r ktrim=l k=23 mink=11 hdist=1 tpe tbo qtrim="rl" trimq=10 maq=10 minlen=25
-
 done
 
 ###### BWA alignment
 for i in *_clean_R1.fastq;
 do
 newfile=$(basename $i _clean_R1.fastq)
-
-$BWA mem -t 2 -M -R '@RG\tID:${newfile}.lib.run\tLB:${newfile}.lib\tPL:ILLUMINA\tSM:${newfile}' $REF/hg19.fa $DAT/${newfile}_clean_R1.fastq $DAT/${newfile}_clean_R2.fastq > $OUTPUT/${newfile}.sam
+$BWA mem -t 4 -M -R '@RG\tID:${newfile}.lib.run\tLB:${newfile}.lib\tPL:ILLUMINA\tSM:${newfile}' $REF/hg19.fa $DAT/${newfile}_clean_R1.fastq $DAT/${newfile}_clean_R2.fastq > $OUTPUT/${newfile}.sam
 
 ### Samtools processing of aligned reads
-$samtools view -bS -@ 48 $OUTPUT/${newfile}.sam > $OUTPUT/${newfile}.bam 
+$samtools view -bS -@ 4 $OUTPUT/${newfile}.sam > $OUTPUT/${newfile}.bam 
 
 rm $OUTPUT/${newfile}.sam
 
