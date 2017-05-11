@@ -10,7 +10,7 @@ REFG="/path/to/reference" ### PATH TO FOLDER TRANSCRIPTOME REFERENCE (GTF file)
 
 SAMTOOLS="/path/to/samtools" ### PATH TO SAMTOOLS 
 
-TOPHAT="/path/to/tophat2" ### PATH TO SAMTOOLS
+TOPHAT="/path/to/tophat2" ### PATH TO TOPHAT2
 
 BOWTIE="/path/to/bowtie" ### PATH TO BOWTIE 
 
