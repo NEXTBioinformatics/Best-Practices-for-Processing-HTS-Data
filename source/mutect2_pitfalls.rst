@@ -24,4 +24,8 @@ The IGV screenshot below shows an example of a variant in TP53 which is not call
 Downstream Filters
 ------------------
 
-Coming soon...
+Or course, by raising the paramter cut-offs, we naturally get a larger number of false positives. For example, the TSC1 variant in the screenshot below is not filtered by MuTect2, although it is clearly noise.
+
+.. image:: _static/TSC1.png
+
+Another typical cause of false positives is similar allele frequencies in tumor and normal. MuTect2 will call variants in tumor somatic, as long as their frequencies in the normal sample are not above the 10% cut-off. In some cases, we therefore end up calling somatic variants with higher allele frequencies in the normal than in the tumor!
