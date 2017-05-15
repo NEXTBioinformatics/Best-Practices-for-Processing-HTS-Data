@@ -17,7 +17,9 @@ These more relaxed settings inevitable lead to an increased number of false posi
 Motivation
 ----------
 
-Coming soon...
+The IGV screenshot below shows an example of a variant in TP53 which is not called by MuTect2 with default parameters. The allele frequency in the normal sample is 58% (1528/2634). However, the variant is filtered out by MuTect2, because it fails both filters above. The allele frequency in the tumor sample is 1.1% (21/1920).
+
+.. image:: _static/TP53.png
 
 Downstream Filters
 ------------------
