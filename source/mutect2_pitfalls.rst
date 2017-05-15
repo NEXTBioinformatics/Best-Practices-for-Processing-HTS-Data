@@ -50,4 +50,10 @@ The rationale behind these values is as follows: The QSS score is the average ba
 Adding Second Variant Caller
 ----------------------------
 
-Coming soon...
+Despite the optimization of MuTect2 described above, important variants may still be missed. The screenshot below shows a clear hotspot variant (BRAF V600E) filtered out by MuTect2 (this particular variants has been independently validated using a different method).
+
+.. image:: _static/BRAF.png
+
+In fact, MuTect2 not only filters out V600E but also a variant in the neighboring codon. The explanation for both variants being filtered is indicated as `clustered_events;multi_event_alt_allele_in_normal` in the VCF file.
+
+Simply disabling these filters leads to an explosion in false positive calls. Instead, we have found that using an additional variant caller besides MuTect2 may rescue erroneously filtered variants. More precisely, we run VarScan2 and check if any *high confidence* variants were also called (but subsequently filtered) by MuTect2. If so, we keep these in a separate file for manual inspection. In the particular example above, both variants are rescued with no extra false positives added.
