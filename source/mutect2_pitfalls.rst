@@ -29,3 +29,10 @@ Or course, by raising the paramter cut-offs, we naturally get a larger number of
 .. image:: _static/TSC1.png
 
 Another typical cause of false positives is similar allele frequencies in tumor and normal. MuTect2 will call variants in tumor somatic, as long as their frequencies in the normal sample are not above the 10% cut-off. In some cases, we therefore end up calling somatic variants with higher allele frequencies in the normal than in the tumor!
+
+To deal with the issue of false positives, we propose the following two metrics calculated from info in the MuTect2 VCF files:
+
+.. math::
+
+   S_{AF} = \begin{cases}1-\frac{AF_{normal}}{AF_{tumor}}&\text{if}\quad AF_{tumor}>AF_{normal}\\0&\text{otherwise}\end{cases}\\[12pt]
+   S_{QSS} = \begin{cases}\frac{QSS_{tumor}}{AD_{tumor}}&\text{if}\quad AD_{tumor}>0\\0&\text{otherwise}\end{cases}
