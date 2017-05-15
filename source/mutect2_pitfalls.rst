@@ -36,3 +36,16 @@ To deal with the issue of false positives, we propose the following two metrics 
 
    S_{AF} = \begin{cases}1-\frac{AF_{normal}}{AF_{tumor}}&\text{if}\quad AF_{tumor}>AF_{normal}\\0&\text{otherwise}\end{cases}\\[12pt]
    S_{QSS} = \begin{cases}\frac{QSS_{tumor}}{AD_{tumor}}&\text{if}\quad AD_{tumor}>0\\0&\text{otherwise}\end{cases}
+
+We have found that filtering samples *not* meeting all of these three criteria:
+
+.. math::
+
+    AF_{tumor} > 0.02,\quad S_{QSS} > 20,\quad\text{and}\quad S_{AF} > 0.75
+
+effectively eliminates all false positives and never removes genuine variants. The rationale behind these values is as follows: The QSS score is the average base quality of variant bases. If this is below 20, the region is very noisy, and the variant is not likely to be genuine. Note that :math:`S_{AF} > 0.75` is equivalent to :math:`AF_{tumor} > 4\cdot AF_{normal}`, which means that a variant with a "high" frequency in the normal sample is not called as somatic, unless its frequency in the tumor sample is "much" higher.
+
+Adding Second Variant Caller
+----------------------------
+
+Coming soon...
