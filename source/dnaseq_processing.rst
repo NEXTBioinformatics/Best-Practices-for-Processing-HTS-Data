@@ -1,7 +1,8 @@
 Processing of DNA-seq
 =====================
+.. highlight:: bash
 
-The workflow below requires specification paths to a number of datasets and programs::
+The workflow below requires specification of paths to a number of datasets and programs::
 	
 	## Datasets
 	assembly="path to reference genome (e.g. b37) in .fasta format"

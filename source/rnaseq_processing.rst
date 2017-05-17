@@ -50,5 +50,8 @@ The SDU workflow for processing RNA-seq data is given as::
 	### Count Matrix construction by HTSeq
 	$python -m HTSeq.scripts.count --format bam --mode union --stranded no --minaqual 1 --type gene --idattr gene_id $OUT/${newfile}/${newfile}_accepted_hits.bam $REFT > $OUT/${newfile}_gene_read_counts_table.tsv
 
-	done 
+	done
+	
+- AAUH
+
  
