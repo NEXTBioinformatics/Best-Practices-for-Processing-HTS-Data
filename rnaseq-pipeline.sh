@@ -9,8 +9,9 @@ SAMTOOLS="/path/to/samtools" ### PATH TO SAMTOOLS
 TOPHAT="/path/to/tophat2" ### PATH TO TOPHAT2
 BOWTIE="/path/to/bowtie" ### PATH TO BOWTIE 
 BBMAP="/path/to/BBMAP" ### PATH TO BBMAP
-PYTHON="/path/to/python"
-HTSEQ="/path/to/HTSeq"
+PYTHON="/path/to/python" ### PATH TO PYTHON
+HTSEQ="/path/to/HTSeq" ### PATH TO HTSeq
+CUFFLINKS="/path/to/cufflinks" ### PATH TO CUFFLINKS
 
 export PATH=$SAMTOOLS:$BOWTIE:$TOPHAT:$HTSEQ:$PATH
 echo $PATH
@@ -39,6 +40,10 @@ $TOPHAT -p 1 -G $REFT --output-dir $OUT/${newfile} $REFG $DAT/${newfile}_clean_R
 $SAMTOOLS/samtools index $OUT/${newfile}/accepted_hits.bam
 mv $OUT/${newfile}/accepted_hits.bam $OUT/${newfile}/${newfile}_accepted_hits.bam
 mv $OUT/${newfile}/accepted_hits.bam.bai $OUT/${newfile}/${newfile}_accepted_hits.bam.bai
+
+#### Sample Transcriptome Assembly by CUFFLINKS
+
+$CUFFLINKS -p 1 -G $REFT $OUT/${newfile}/${newfile}_accepted_hits.bam
 
 ### Count Matrix construction by HTSeq
 $python -m HTSeq.scripts.count --format bam --mode union --stranded no --minaqual 1 --type gene --idattr gene_id $OUT/${newfile}/${newfile}_accepted_hits.bam $REFT > $OUT/${newfile}_gene_read_counts_table.tsv
