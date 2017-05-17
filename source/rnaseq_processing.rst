@@ -35,20 +35,38 @@ The SDU workflow for processing RNA-seq data is given as::
 	for i in *_R1.fastq;
 	do
 	newfile=$(basename $i _R1.fastq)
-	$BBMAP/bbduk.sh -Xmx20g in1=/$DAT/${newfile}_R1.fastq in2=/$DAT/${newfile}_R2.fastq out1=/$DAT/${newfile}_clean_R1.fastq out2=/$DAT/${newfile}_clean_R2.fastq ref=$BBMAP/resources/adapters.fa ktrim=r ktrim=l k=23 mink=11 hdist=1 tpe tbo qtrim="rl" trimq=10 maq=10 minlen=25
+	$BBMAP/bbduk.sh -Xmx20g \
+			in1=/$DAT/${newfile}_R1.fastq \
+			in2=/$DAT/${newfile}_R2.fastq \
+			out1=/$DAT/${newfile}_clean_R1.fastq \
+			out2=/$DAT/${newfile}_clean_R2.fastq \
+			ref=$BBMAP/resources/adapters.fa \
+			ktrim=r ktrim=l k=23 mink=11 hdist=1 tpe tbo \
+			qtrim="rl" trimq=10 maq=10 minlen=25
 	done
 
 	#### Bowtie2-Tophat2 alignment
 	for i in *_clean_R1.fastq;
 	do
 	newfile=$(basename $i _clean_R1.fastq)
-	$TOPHAT -p 1 -G $REFT --output-dir $OUT/${newfile} $REFG $DAT/${newfile}_clean_R1.fastq $DAT/${newfile}_clean_R2.fastq 
+	$TOPHAT -p 1 -G $REFT \
+			--output-dir $OUT/${newfile} \
+			$REFG $DAT/${newfile}_clean_R1.fastq \
+			$DAT/${newfile}_clean_R2.fastq 
 	$SAMTOOLS/samtools index $OUT/${newfile}/accepted_hits.bam
 	mv $OUT/${newfile}/accepted_hits.bam $OUT/${newfile}/${newfile}_accepted_hits.bam
 	mv $OUT/${newfile}/accepted_hits.bam.bai $OUT/${newfile}/${newfile}_accepted_hits.bam.bai
 
 	### Count Matrix construction by HTSeq
-	$python -m HTSeq.scripts.count --format bam --mode union --stranded no --minaqual 1 --type gene --idattr gene_id $OUT/${newfile}/${newfile}_accepted_hits.bam $REFT > $OUT/${newfile}_gene_read_counts_table.tsv
+	$python -m HTSeq.scripts.count \
+			--format bam \
+			--mode union \
+			--stranded no \
+			--minaqual 1 \
+			--type gene \
+			--idattr gene_id \
+			$OUT/${newfile}/${newfile}_accepted_hits.bam $REFT \
+			> $OUT/${newfile}_gene_read_counts_table.tsv
 
 	done
 	
