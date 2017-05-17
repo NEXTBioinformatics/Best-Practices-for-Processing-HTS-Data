@@ -5,6 +5,8 @@ Processing of RNA-seq
 The SDU workflow for processing RNA-seq data is given as:
 
 .. highlight:: bash
+
+::
    #!/bin/sh
    
    #### PATHS TO REQUIRED SOFTWARE, INPUT & OUTPUT FOLDERS
