@@ -15,5 +15,7 @@ number of programs and reference datasets which must be downloaded and installed
    datasets
    dnaseq_processing
    rnaseq_processing
+   structural_variants
    CLC_germline_workflow
    mutect2_pitfalls
+   
