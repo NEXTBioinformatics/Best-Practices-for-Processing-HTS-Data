@@ -4,8 +4,8 @@ Processing of RNA-seq
 
 The SDU workflow for processing RNA-seq data is given as:
 
-.. code-block:: bash
-    #!/bin/sh
+.. highlight:: bash
+   #!/bin/sh
    
    #### PATHS TO REQUIRED SOFTWARE, INPUT & OUTPUT FOLDERS
    DAT="/path/to/data" ### PATH TO FOLDER CONTAINING GZ-COMPRESSED FASTQ FILES
