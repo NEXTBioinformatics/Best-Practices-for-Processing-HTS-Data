@@ -3,7 +3,7 @@ Structural Variants
 .. highlight:: bash
 
 - SDU
-The following script developed at SDU might be used to infer breakpoints from DNA-seq data using Breakdancer::
+The following script developed at SDU is used to infer breakpoints from DNA-seq data with `Breakdancer <https://github.com/genome/breakdancer>`_::
 
 	#!/bin/sh
 	### Specify paths to requiered software, input and output folders
@@ -30,13 +30,13 @@ The following script developed at SDU might be used to infer breakpoints from DN
 	do
 	newfile=$(basename $i _R1.fastq)
 	$BBMAP/bbduk.sh -Xmx20g \
-					in1=/$DAT/${newfile}_R1.fastq \
-					in2=/$DAT/${newfile}_R2.fastq \
-					out1=/$DAT/${newfile}_clean_R1.fastq \
-					out2=/$DAT/${newfile}_clean_R2.fastq \
-					ref=$BBMAP/resources/adapters.fa \
-					ktrim=r ktrim=l k=23 mink=11 hdist=1 \
-					tpe tbo qtrim="rl" trimq=10 maq=10 minlen=25
+			in1=/$DAT/${newfile}_R1.fastq \
+			in2=/$DAT/${newfile}_R2.fastq \
+			out1=/$DAT/${newfile}_clean_R1.fastq \
+			out2=/$DAT/${newfile}_clean_R2.fastq \
+			ref=$BBMAP/resources/adapters.fa \
+			ktrim=r ktrim=l k=23 mink=11 hdist=1 \
+			tpe tbo qtrim="rl" trimq=10 maq=10 minlen=25
 	done
 
 	###### BWA alignment
@@ -99,7 +99,7 @@ Fusionmap Requires a control file, with the following specifications::
 	OutputPath=output
 	OutputName=OUT.file
 	
-FusionMAP may be run using the script below::
+FusionMAP can then be run using the script below::
 
 	## Set paths
 	mkdir /scratch/$PBS_JOBID
