@@ -5,11 +5,9 @@ Datasets
 	<ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/>`_ 
 	with all necessary files for the GATK workflow is provided by the Broad Institute.
 	The link contains bundles for a number of different versions of the human reference genome; 
-	in the NEXT bioinformatics network we use either b37 or Hg19. The two reference genomes are almost identical except for a few minor differences.
-
-- Oncotator Annotation
-	Instructions for downloading the Oncotator ressource files and installing the software can be found `here
-	<http://gatkforums.broadinstitute.org/wdl/discussion/4154/howto-install-and-run-oncotator-for-the-first-time>`_
+	in the NEXT bioinformatics network we use the Genomic Data Commons (GDC) version of the GRCh38 reference genome. 
+	The reference genome and associated index files is available for download `here
+	<https://gdc.cancer.gov/about-data/data-harmonization-and-generation/gdc-reference-files>`_
 	
 
 
