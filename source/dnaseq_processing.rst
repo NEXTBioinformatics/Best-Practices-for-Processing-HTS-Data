@@ -54,6 +54,8 @@ Aligned reads are sorted, converted to BAM, and PCR duplicates are marked::
 
 - INDEL realignment
 
+Although INDEL realignment is included in the haplotypecaller used in MUTECT2 the reads are realigned in the .bams, so that they look more reasonable when manually validating variants with IGV::
+
 	## Create a target list of intervals to be realigned
 	java -jar $gatk \
 	-T RealignerTargetCreator \
@@ -110,7 +112,7 @@ Quality scores in BAM files are recalibrated to adjust for bias in the quality s
 
 - Alignment Metrics
 
-quality metrics for alignment and duplication are calculated using picard tools
+quality metrics for alignment and duplication are calculated using picard tools::
 
 	$java -jar $picard BedToIntervalList \
 	I=$target_regions \
@@ -128,7 +130,7 @@ quality metrics for alignment and duplication are calculated using picard tools
 - Variant calling for somatic mutations
 
 Somatic variants are called using both Mutect2 and Varscan2, and variants and subsequently merged and filtered. A more detailed description is found in the Mutect2 pitfalls section.
-Variant calling with Mutect2 can optionally be parallelized by chromosome using the -L parameter for faster runtimes.
+Variant calling with Mutect2 can optionally be parallelized by chromosome using the -L parameter for faster runtimes::
 
 	## Run Mutect2
 	$java -jar $gatk \
@@ -143,7 +145,7 @@ Variant calling with Mutect2 can optionally be parallelized by chromosome using 
 	--dbsnp $known_snp \
 	-nct 28
 	
-Variant calling with varscan2 requires and MPILEUP file which can be built with samtools using the aligned BAM files for tumor and normal samples
+Variant calling with varscan2 requires and MPILEUP file which can be built with samtools using the aligned BAM files for tumor and normal samples::
 
 	## Build mpileup with samtools
 	samtools mpileup \
@@ -152,7 +154,7 @@ Variant calling with varscan2 requires and MPILEUP file which can be built with 
 	-B normal.bam \
 	tumor.bam > normal-tumor.mpileup
 
-Variants may then be called with varscan2 and high confidence SNPs/INDELs can be extracted usign the processSomatic command
+Variants may then be called with varscan2 and high confidence SNPs/INDELs can be extracted usign the processSomatic command::
 
 	## Run varscan2 somatic
 	$java -jar $varscan2 \
@@ -176,7 +178,7 @@ Variants may then be called with varscan2 and high confidence SNPs/INDELs can be
 - Variant filtration
 
 Final set of somatic SNPs / INDELS are found by combining and filtering outputs from Mutect2 and varscan2 as described in the Mutect2 pitfalls section.
-Briefly, for a variant to pass filtering the following must be fulfilled:
+Briefly, for a variant to pass filtering the following must be fulfilled::
 
 	1) PASS in Mutect2 or called by MuTect2 + PASS in varscan2 HC
 	2) Tumor AF > 4 * Normal AF
