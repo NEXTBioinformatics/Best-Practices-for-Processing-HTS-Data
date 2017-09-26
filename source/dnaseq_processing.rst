@@ -129,7 +129,7 @@ quality metrics for alignment and duplication are calculated using picard tools:
 		
 - Variant calling for somatic mutations
 
-Somatic variants are called using both Mutect2 and Varscan2, and variants and subsequently merged and filtered. A more detailed description is found in the Mutect2 pitfalls section.
+Somatic variants are called using both Mutect2 and Varscan2, and variants are subsequently merged and filtered. A more detailed description is found in the Mutect2 pitfalls section.
 Variant calling with Mutect2 can optionally be parallelized by chromosome using the -L parameter for faster runtimes::
 
 	## Run Mutect2
@@ -145,7 +145,7 @@ Variant calling with Mutect2 can optionally be parallelized by chromosome using 
 	--dbsnp $known_snp \
 	-nct 28
 	
-Variant calling with varscan2 requires and MPILEUP file which can be built with samtools using the aligned BAM files for tumor and normal samples::
+Variant calling with varscan2 requires an mpileup file which can be built with samtools using the aligned BAM files for tumor and normal samples::
 
 	## Build mpileup with samtools
 	samtools mpileup \
