@@ -154,7 +154,7 @@ Variant calling with varscan2 requires an mpileup file which can be built with s
 	-B normal.bam \
 	tumor.bam > normal-tumor.mpileup
 
-Variants may then be called with varscan2 and high confidence SNPs/INDELs can be extracted usign the processSomatic command::
+Variants may then be called with varscan2 and high confidence SNPs/INDELs can be extracted using the processSomatic command::
 
 	## Run varscan2 somatic
 	$java -jar $varscan2 \
@@ -177,7 +177,7 @@ Variants may then be called with varscan2 and high confidence SNPs/INDELs can be
 
 - Variant filtration
 
-Final set of somatic SNPs / INDELS are found by combining and filtering outputs from Mutect2 and varscan2 as described in the Mutect2 pitfalls section.
+The final set of somatic SNPs / INDELS are found by combining and filtering outputs from Mutect2 and varscan2 as described in the Mutect2 pitfalls section.
 Briefly, for a variant to pass filtering the following must be fulfilled::
 
 	1) PASS in Mutect2 or called by MuTect2 + PASS in varscan2 HC
