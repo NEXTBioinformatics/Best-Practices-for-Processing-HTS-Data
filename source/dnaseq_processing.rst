@@ -14,9 +14,10 @@ The workflow below requires specification of paths to a number of datasets and p
 	
 	## Programs
 	java="path to java 1.8 or newer"
-	gatk="path to gatk .jar file"
+	gatk="path to GATK .jar file"
 	picard="path to picard .jar file"
 	varscan2="path to varscan2 .jar file"
+	samtools="path to samtools"
 	
 - Alignment
 
@@ -148,7 +149,7 @@ Variant calling with Mutect2 can optionally be parallelized by chromosome using 
 Variant calling with varscan2 requires an mpileup file which can be built with samtools using the aligned BAM files for tumor and normal samples::
 
 	## Build mpileup with samtools
-	samtools mpileup \
+	$samtools mpileup \
 	-f $assembly \
 	-q 1 \
 	-B normal.bam \
