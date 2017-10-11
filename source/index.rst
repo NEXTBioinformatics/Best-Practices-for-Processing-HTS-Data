@@ -6,9 +6,6 @@
 Best Practices for Processing HTS Data
 ======================================
 
-These workflows are based on the `GATK Best Practices <https://software.broadinstitute.org/gatk/best-practices/>`_. The workflow requires specification of paths to a
-number of programs and reference datasets which must be downloaded and installed first.
-
 .. toctree::
    :maxdepth: 2
 
