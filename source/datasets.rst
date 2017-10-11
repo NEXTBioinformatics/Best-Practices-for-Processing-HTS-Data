@@ -1,13 +1,15 @@
 Software and reference data
 ========
 - Quality check of raw reads
-	Quality check and removal of adapters from raw reads is done using the wrapper tool "Trim Galore!" which combines adapter removal with Cutadapt and quality checks with FastQC:
+	Quality check and removal of adapters from raw reads is done using the wrapper tool 
+	"Trim Galore!" which combines adapter removal with Cutadapt and quality checks with FastQC:
 		- `Trim Galore! <https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/>`_
 		- `Cutadapt <https://cutadapt.readthedocs.io/en/stable/>`_
 		- `FastQC <https://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_
 
 - GATK best practices
-	These workflows are based on the `GATK Best Practices <https://software.broadinstitute.org/gatk/best-practices/>`_, with the addition of a second variant caller. The workflow requires specification of paths to a
+	These workflows are based on the `GATK Best Practices <https://software.broadinstitute.org/gatk/best-practices/>`_, 
+	with the addition of a second variant caller. The workflow requires specification of paths to a
 	number of programs and reference datasets which must be downloaded and installed first:
 		- `BWA <http://bio-bwa.sourceforge.net/>`_
 		- `GATK <https://software.broadinstitute.org/gatk/download/>`_
