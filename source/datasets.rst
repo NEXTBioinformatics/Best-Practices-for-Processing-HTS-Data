@@ -17,4 +17,4 @@ Software and reference data
 - GATK bundle
 	For the GATK workflow a number of reference datasets with known variants are needed. A `ressource bundle
 	<ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/>`_ 
-	with all necessary files for the GATK workflow is provided by the Broad Institute.
+	with all necessary files for the GATK workflow is provided by the Broad Institute.    
