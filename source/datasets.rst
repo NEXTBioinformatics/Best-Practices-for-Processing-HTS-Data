@@ -8,8 +8,8 @@ Software and reference data
 		- `Cutadapt <https://cutadapt.readthedocs.io/en/stable/>`_
 		- `FastQC <https://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_
 
-- GATK best practices
-	These workflows are based on the `GATK Best Practices <https://software.broadinstitute.org/gatk/best-practices/>`_, 
+- Aligment and variant calling
+	This workflow is based on the `GATK Best Practices <https://software.broadinstitute.org/gatk/best-practices/>`_, 
 	with the addition of a second variant caller. The workflow requires specification of paths to a
 	number of programs and reference datasets which must be downloaded and installed first:
 		- `BWA <http://bio-bwa.sourceforge.net/>`_

@@ -94,7 +94,7 @@ Quality scores in BAM files are recalibrated to adjust for bias in the quality s
 	$java -jar $gatk \
 	-T BaseRecalibrator \
 	-R $assembly \
-	-nct 8 \
+	-nct 28 \
 	-I realigned_dedup_reads.bam \
 	-knownSites $known_snp \
 	-knownSites $known_indels \
@@ -106,7 +106,7 @@ Quality scores in BAM files are recalibrated to adjust for bias in the quality s
 	$java -jar $gatk \
 	-T PrintReads \
 	-R $assembly \
-	-nct 8 \
+	-nct 28 \
 	-I realigned_dedup_reads.bam \
 	-BQSR recal_data.table \
 	-o recal_realigned_dedup_reads.bam
