@@ -1,5 +1,6 @@
 Software and reference data
 ========
+
 - Quality check of raw reads
 	Quality check and removal of adapters from raw reads is done using the wrapper tool 
 	"Trim Galore!" which combines adapter removal with Cutadapt and quality checks with FastQC:
@@ -19,7 +20,7 @@ Software and reference data
 
 - Reference genome
 	In the NEXT bioinformatics network we use the Genomic Data Commons (GDC) version of the GRCh38 reference genome. 
-	the reference genome and associated index files is available for download `here
+	The reference genome and associated index files are available for download `here
 	<https://gdc.cancer.gov/about-data/data-harmonization-and-generation/gdc-reference-files>`_
 	
 - GATK bundle
