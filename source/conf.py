@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Best Practices for Processing HTS Data'
+project = 'Common Workflows for Processing HTS Data'
 copyright = '2016, NEXT Bioinformatics'
 author = 'NEXT Bioinformatics'
 
@@ -225,8 +225,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'BestPracticesforProcessingHTSData.tex', 'Best Practices for Processing HTS Data Documentation',
-     'NEXT Bioinformatics Working Group', 'manual'),
+    (master_doc, 'CommonWorkflowsforProcessingHTSData.tex', 'Common Workflows for Processing HTS Data Documentation',
+     'NEXT Bioinformatics', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
