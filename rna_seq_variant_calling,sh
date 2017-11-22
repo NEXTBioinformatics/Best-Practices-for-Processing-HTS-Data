@@ -1,0 +1,65 @@
+#!/bin/sh
+
+DAT="/path/to/bam" ### PATH TO FOLDER CONTAINING ALIGNED RNA-SEQ - BAM FILES 
+PICARD="/path/to/picard" ## PATH TO PICARD
+REFG="/path/to/reference" ### PATH TO FOLDER GENOME REFERENCE (fa file and bowtie index files)
+SAMTOOLS="/path/to/samtools" ### PATH TO SAMTOOLS
+GATK="/path/to/GATK" ### PATH TO GATK BUNDLE
+REFT="/path/to/reference" ### PATH TO FOLDER CONTAINING KNOWN SITES INFORTMATION
+ANNOVAR="/path/to/annovar" ## PATH TO ANNOVAR
+OUT="/path/to/output" ### PATH TO FOLDER DEPOSITING THE RESULTS
+REFT="/path/to/reference" ### PATH TO FOLDER TRANSCRIPTOME REFERENCE (gtf/gff file)
+
+cd $DAT
+
+for i in *.bam;
+do
+newfile=$(basename $i .bam)
+echo "$newfile"
+
+#### Add read groups, sort, mark duplicates, and create index
+
+java -jar $picard/AddOrReplaceReadGroups.jar I=${newfile}.bam O=${newfile}_rg_added_sorted.bam SO=coordinate RGID=id RGLB=library RGPL=illumina RGPU=machine RGSM=${newfile} 
+
+java -jar $picard/MarkDuplicates.jar I=${newfile}_rg_added_sorted.bam O=${newfile}_dedupped.bam  CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT M=output.metrics
+
+#### Split'N'Trim and reassign mapping qualities
+
+java -jar $picard/ReorderSam.jar I=${newfile}_dedupped.bam O=${newfile}_dedupped2.bam REFERENCE=$REFG
+
+$samtools/samtools index ${newfile}_dedupped2.bam 
+
+java -jar $GATK/GenomeAnalysisTK.jar -T SplitNCigarReads -R $REFG -I ${newfile}_dedupped2.bam -o ${newfile}_split.bam -rf ReassignOneMappingQuality -RMQF 255 -RMQT 60 -U ALLOW_N_CIGAR_READS
+
+#### Indel Realignment
+
+java -jar $GATK/GenomeAnalysisTK.jar -T RealignerTargetCreator -R $REFG -I ${newfile}_split.bam --num_threads 48 -o ${newfile}_realignment_targets.list
+
+java -jar $GATK/GenomeAnalysisTK.jar -T IndelRealigner -R $REFG -I ${newfile}_split.bam -targetIntervals ${newfile}_realignment_targets.list -o ${newfile}_realigned.bam
+
+#### Base Recalibration
+java -jar $GATK/GenomeAnalysisTK.jar -T BaseRecalibrator -R $REFG -I ${newfile}_realigned.bam -knownSites $REFT/1000G_phase1.indels.hg19.vcf -knownSites $REFT/dbsnp_135.hg19.vcf -knownSites $REFT/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf -o ${newfile}_recal_data.table
+
+java -jar $GATK/GenomeAnalysisTK.jar -T PrintReads -R $REFG -dt NONE -I ${newfile}_realigned.bam -BQSR ${newfile}_recal_data.table -o ${newfile}_marked.realigned.recal.bam
+
+### Variant Calling
+
+java -jar $GATK/GenomeAnalysisTK.jar -T HaplotypeCaller -R $REFG -I ${newfile}_marked.realigned.recal.bam -dontUseSoftClippedBases -stand_call_conf 20.0 -o ${newfile}_raw_output.vcf
+
+### Variant Filtering
+
+java -jar $GATK/GenomeAnalysisTK.jar -T VariantFiltration -R $REFG -V ${newfile}_raw_output.vcf -window 35 -cluster 3 -filterName FS -filter "FS > 30.0" -filterName QD -filter "QD < 2.0" -o ${newfile}_output.vcf 
+
+perl $ANNOVAR/convert2annovar.pl --format vcf4 -includeinfo -withzyg ${newfile}_output.vcf -outfile ${newfile}.avinput
+
+perl $ANNOVAR/table_annovar.pl ${newfile}.avinput $ANNOVAR/humandb/ -buildver hg19 -out ${newfile} -remove -protocol refGene,cytoBand,genomicSuperDups,esp6500siv2_all,1000g2014oct_all,1000g2014oct_afr,1000g2014oct_eas,1000g2014oct_eur,snp138,ljb26_all -operation g,r,r,f,f,f,f,f,f,f -nastring . --otherinfo  
+
+done
+
+
+
+
+
+
+
+  
