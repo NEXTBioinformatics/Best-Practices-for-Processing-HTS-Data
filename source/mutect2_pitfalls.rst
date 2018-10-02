@@ -24,7 +24,7 @@ The IGV screenshot below shows an example of a variant in TP53 which is not call
 Downstream Filters
 ------------------
 
-MuTect2 with standard makes many false positive calls in noisy regions, and this only gets worse with the relaxed paramter settings. For example, the TSC1 variant in the screenshot below is not filtered by MuTect2, although it is clearly noise.
+MuTect2 with standard parameters makes many false positive calls in noisy regions, and this only gets worse with the relaxed paramter settings. For example, the TSC1 variant in the screenshot below is not filtered by MuTect2, although it is clearly noise.
 
 .. image:: _static/TSC1.png
 
